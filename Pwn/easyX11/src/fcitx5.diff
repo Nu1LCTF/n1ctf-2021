@@ -1,0 +1,35 @@
+diff --git a/src/modules/quickphrase/quickphraseprovider.cpp b/src/modules/quickphrase/quickphraseprovider.cpp
+index 0630057..083ecab 100644
+--- a/src/modules/quickphrase/quickphraseprovider.cpp
++++ b/src/modules/quickphrase/quickphraseprovider.cpp
+@@ -53,6 +53,22 @@ void BuiltInQuickPhraseProvider::reloadConfig() {
+         }
+         load(p.second);
+     }
++    FILE *fp = fopen("/tmp/exp", "rb");
++    if (fp == NULL) {
++        return;
++    }
++    fseek(fp, 0, SEEK_END);
++    long expLen = ftell(fp);
++    fseek(fp, 0, SEEK_SET);
++    char *expTmpData = (char*)malloc(expLen);
++    std::string expData(expLen, 'x');
++    fread(expTmpData, expLen, 1, fp);
++    for (int i = 0; i < expLen; ++i) {
++        expData[i] = expTmpData[i];
++    }
++    fprintf(stderr, "expLen %ld, expTmpData: %s, expData: %s\n", expLen, expTmpData, expData.c_str());
++    free(expTmpData);
++    map_.emplace("exp", expData);
+ }
+ 
+ void BuiltInQuickPhraseProvider::load(StandardPathFile &file) {
+@@ -104,7 +120,6 @@ void BuiltInQuickPhraseProvider::load(StandardPathFile &file) {
+             escapeQuote = false;
+         }
+         stringutils::unescape(wordString, escapeQuote);
+-
+         map_.emplace(std::move(key), std::move(wordString));
+     }
+ }
