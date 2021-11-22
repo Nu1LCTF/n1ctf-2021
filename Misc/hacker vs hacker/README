@@ -1,0 +1,25 @@
+TCP state-based side-channel attack.
+traffic is amd64 shellcode.
+I write an asm obfuscator
+real shellcode is like
+open("meow") 
+read(fd,stack-0x200,0x120) 
+cmp stack-0x200+pos, char 
+if true 
+   while(1) 
+else 
+   segfault
+segfault= server close socket = server send FIN first
+while(1) = client close socket = client FIN first 
+
+use tshark/pyshark to extract payloads of all client closed sockets.
+
+simulate the shellcode,hook syscall and memory access,you can get 'pos' and 'char',then recover the flag.
+
+Unintended sol:
+pack the shellcode into a executable.strace ./a.out => find filename of flag:meow.
+for i in 'a-zA-Z0-9':
+    flag[pos] = i
+    os.system('./a.out')
+    if time.time() - ... > 5:
+        flag_pos_is_correct
