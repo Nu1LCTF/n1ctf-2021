@@ -279,7 +279,7 @@ What left to do is just implement the ordinary padding oracle attack to recover 
 
 ---
 
-PS: 7777 times HMAC calculation is intentionally made to help the player exploit easier. In the [real world scenario](), even if the HMAC calucation is only once, timing attack is still feasible by some techniques such as increasing the length of the ciphertext to make the HMAC calculation longer or applying statistical analysis to timing measurements.
+PS: 7777 times HMAC calculation is intentionally made to help the player exploit easier. In the [real world scenario](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.702.1052&rep=rep1&type=pdf), even if the HMAC calucation is only once, timing attack is still feasible by some techniques such as increasing the length of the ciphertext to make the HMAC calculation longer or applying statistical analysis to timing measurements.
 
 PPS: In fact, the AES part in this challenge is a case of [Encrypt-then-MAC](https://crypto.stackexchange.com/questions/202/should-we-mac-then-encrypt-or-encrypt-then-mac). The correct way to do it during decryption is that, before any other operations, the HMAC **MUST** be checked first to prevent any modification on the ciphertext. Only if the HMAC check is passed can the decryption operation be done safely.
 
