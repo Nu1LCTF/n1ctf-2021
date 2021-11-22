@@ -1,3 +1,4 @@
+bypass date
 ```
 ➜  ~ php -a
 Interactive shell
