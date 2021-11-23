@@ -4,7 +4,7 @@
 
 ​	Finally, 20 expressions are used to verify whether the encrypted result is correct.
 
-<img src="C:\Users\10841\Desktop\n1ctf2021\hello\attachment\hello_wp\images\image-20211122232738064.png" alt="image-20211122232738064" style="zoom:67%;" />
+![image](https://github.com/Nu1LCTF/n1ctf-2021/blob/main/Re/hello/images/image-20211122232738064.png)
 
 First solve the expression to get the encrypted result.
 
