@@ -1,1 +1,8 @@
 docker: nt1dr/n1ctf2021-ctfhub
+categories: RE/CRYPTO/WEB
+I turn on -Ofast and unroll the loops manually,so the decomplie result of 'encrypt' is almost 1000 lines,which is difficult to read.
+But you must have noticed repeated code snippets,they are results of function inlining & loop unrolling.Just analyze small part of them and recover the loop structure,things will be easier to understand.
+After you simpily the encryption routine,you will find the algorithm is CBC-mode,blocksize=64bit.Someone said padding oracle is an unintend sol,but I have not verified that yet.
+The process of encrypt and decrypt is similar, typical 3-layer feistel network, very like 3-round DES. You can decrypt arbitrary ciphertext by modifying cookie and visit share.php.
+Intended sol is perform a differential attack(a bit different from typical ones,you can't choose plaintext this time),solve the secret key. Use __toString of class User to enumerate /tmp/box/_user,find the flag folder.
+And submit a fake serialized class User,modify userinfo path in cookie to your fake user,then you can read arbitrary file in arbitrary folder.
