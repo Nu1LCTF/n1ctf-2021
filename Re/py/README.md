@@ -36,13 +36,13 @@ for k, v in module.toc.items():
 
 Then decompile `var.pyc` to get the variable.
 
-![image-20211121171733796](https://github.com/Nu1LCTF/n1ctf-2021/edit/main/Re/py/images/image-20211121171733796.png)
+![image-20211121171733796](https://github.com/Nu1LCTF/n1ctf-2021/blob/main/Re/py/images/image-20211121171733796.png)
 
 Check `opcode.pyc` and found that the opcode of some operators has been modified (`^` -> `+`, `+` ->` %` ... )
 
 Modify the opcode map of `pycdc` and try to decompile `L.pyc`, but it fails. Disassemble `L.pyc` with `pycdas`.
 
-![image-2021](https://github.com/Nu1LCTF/n1ctf-2021/edit/main/Re/py/images/image-20211122104824479.png)
+![image-2021](https://github.com/Nu1LCTF/n1ctf-2021/blob/main/Re/py/images/image-20211122104824479.png)
 
 Get the code from these bytecode.
 
@@ -177,7 +177,7 @@ modify_varname(code)
 
 Then decompile `dumpss.pyc` to get the source code.
 
-![image-20211122093925885](https://github.com/Nu1LCTF/n1ctf-2021/edit/main/Re/py/images/image-20211122093925885.png)
+![image-20211122093925885](https://github.com/Nu1LCTF/n1ctf-2021/blob/main/Re/py/images/image-20211122093925885.png)
 
 From the code we know that this is a Python library for elliptic curve crypto.
 
