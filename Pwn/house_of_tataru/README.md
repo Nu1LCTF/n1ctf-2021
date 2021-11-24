@@ -81,8 +81,7 @@ so we can overwrite the `head` pointer to a fake `fl struct` to control the rip.
 **unintended solution **
 
 * The distance between pie and heap can be brute force, `r3kapig` costs 7hours to make it success remotely 😨
+* ~~ overwrite  `meta->mem` to `bss` , and it can set a valid `group` to bypass the check in `calloc`. It's also a cool solution!~~
 
-* overwrite `meta->mem` to `bss` , and it can set a valid `group` to bypass the check in `calloc`. It's also a cool solution!
-
-
+If we modify a "freed" `meta->mem`, then we can set a valid `group` through `alloc_group`, which will alloc a new group and set it's member. If we happen to be able to make the next allocated `group` the one we modified, we can bypass the check in the calloc. 
 
